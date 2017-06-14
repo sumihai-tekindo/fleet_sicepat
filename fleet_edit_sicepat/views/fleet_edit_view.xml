@@ -1,0 +1,43 @@
+<openerp>
+	<data>
+		<record id="fleet_vehicle_inherit_form" model="ir.ui.view">
+			<field name="name">fleet.vehicle.inherit.form</field>
+			<field name="model">fleet.vehicle</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_form" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//form/sheet/group[1]/group[1]/field[@name='vin_sn']" position="after">
+					<field name='stnk'/>
+					<field name='bpkb'/>
+					<field name='kir'/>
+				</xpath>
+
+
+				<xpath expr="//form/sheet/group[1]/group[2]/field[@name='car_value']" position="after">
+					<field name='no_mesin'/>
+					<field name='tahun_pembuatan'/>
+					<field name="analytic_account" groups="analytic.group_analytic_accounting"/>
+				</xpath>
+
+
+				<xpath expr="//form/sheet/group[2]/group[1]/field[@name='color']" position="after">
+					<field name='tipe_kendaraan'/>
+					<field name='sticker'/>
+				</xpath>
+				
+				<xpath expr="//form/sheet/group[2]" position="after">
+					<group string="Kelengkapan Tools">
+                        <field name="tools_ids" nolabel="1">
+                            <tree string="Kelengkapan Tools" editable="bottom">
+                           		<field name="tool_id"/>
+                           		<field name="availability"/>
+                           		<field name="notes"/>
+                            </tree>
+                        </field>
+                    </group>
+				</xpath>
+
+			</field>
+		</record>
+	</data>
+</openerp>

@@ -1,0 +1,41 @@
+<openerp>
+	<data>
+<!--	START TICKET TYPE	-->
+		<record model="ir.actions.act_window" id="fleet_tools_action">
+            <field name="name">Fleet Tools</field>
+            <field name="res_model">fleet.tools</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.ui.view" id="fleet_tools_tree_view">
+            <field name="name">fleet.tools.tree</field>
+            <field name="model">fleet.tools</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="fleet_tools_form_view">
+            <field name="name">fleet.tools.form</field>
+            <field name="model">fleet.tools</field>
+            <field name="arch" type="xml">
+                <form>
+	            	<sheet>
+		            	<group>
+		            		<group>
+		                    	<field name="name"/>
+			                </group>
+		                </group>
+	            	</sheet>
+                </form>
+            </field>
+        </record>
+<!--    END OF TICKET TYPE    -->
+
+<!--    START MENU TICKET TYPE    -->
+        <menuitem action="fleet_tools_action" parent="fleet.fleet_configuration" id="fleet_tools_menu" groups="fleet.group_fleet_user"/>
+<!--    END OF MENU TICKET TYPE    	-->
+	
+	</data>
+</openerp>

@@ -1,0 +1,24 @@
+<openerp>
+	<data>
+		<record id="service_type_kir" model="fleet.service.type">
+            <field name="category">contract</field>
+            <field name="name">KIR</field>
+        </record>
+
+        <record id="service_type_pajak" model="fleet.service.type">
+            <field name="category">contract</field>
+            <field name="name">Pajak Tahunan</field>
+        </record>
+
+        <record id="service_type_stnk" model="fleet.service.type">
+            <field name="category">contract</field>
+            <field name="name">STNK 5 Tahunan</field>
+        </record>
+
+        <record id="service_type_asuransi" model="fleet.service.type">
+            <field name="category">contract</field>
+            <field name="name">Asuransi</field>
+        </record>
+
+	</data>
+</openerp>
