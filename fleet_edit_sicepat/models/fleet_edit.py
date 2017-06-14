@@ -24,4 +24,7 @@ class fleet_vehicle(osv.osv):
 		'transmission': fields.selection([('manual', 'Manual'), ('automatic', 'Automatic')], 'Transmission', help='Transmission Used by the vehicle',required=True),
 		'fuel_type': fields.selection([('gasoline', 'Gasoline'), ('diesel', 'Diesel'), ('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle',required=True),
 		'tools_ids': fields.one2many('vehicle.fleet.tools','fleet_id',"Tools"),
+
+		
+
 	}

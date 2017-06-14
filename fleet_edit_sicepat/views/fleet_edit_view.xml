@@ -27,15 +27,64 @@
 				
 				<xpath expr="//form/sheet/group[2]" position="after">
 					<group string="Kelengkapan Tools">
-                        <field name="tools_ids" nolabel="1">
-                            <tree string="Kelengkapan Tools" editable="bottom">
-                           		<field name="tool_id"/>
-                           		<field name="availability"/>
-                           		<field name="notes"/>
-                            </tree>
-                        </field>
-                    </group>
+						<field name="tools_ids" nolabel="1">
+							<tree string="Kelengkapan Tools" editable="bottom">
+								<field name="tool_id"/>
+								<field name="availability"/>
+								<field name="notes"/>
+							</tree>
+						</field>
+					</group>
 				</xpath>
+
+
+
+				<xpath expr="//form/sheet/group[1]/group[1]/field[@name='driver_id']" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+
+				<xpath expr="//form/sheet/group[1]/group[1]/field[@name='location']" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+
+				<xpath expr="//form/sheet/group[1]/group[2]/field[@name='car_value']" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+
+				<xpath expr="//form/sheet/group[2]/group[1]/field[@name='seats']" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+
+				<xpath expr="//form/sheet/group[2]/group[1]/field[@name='doors']" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+
+
+				<xpath expr="//form/sheet/group[2]/group[2]/label[@for='co2']" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/group[2]/group[2]/div[1]" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+
+
+				<xpath expr="//form/sheet/group[2]/group[2]/field[@name='horsepower']" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+
+				<xpath expr="//form/sheet/group[2]/group[2]/field[@name='horsepower_tax']" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+
+
+				<xpath expr="//form/sheet/group[2]/group[2]/label[@for='power']" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/group[2]/group[2]/div[2]" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+
+
 
 			</field>
 		</record>
