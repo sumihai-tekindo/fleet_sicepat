@@ -1,5 +1,7 @@
 <openerp>
 	<data>
+
+<!-- Fleet Vehicle -->
 		<record id="fleet_vehicle_inherit_form" model="ir.ui.view">
 			<field name="name">fleet.vehicle.inherit.form</field>
 			<field name="model">fleet.vehicle</field>
@@ -85,8 +87,83 @@
 				</xpath>
 
 
+  
+			</field>
+		</record>
+
+
+
+<!-- Fleet Vehicle Log Contract -->
+
+		<record id="fleet_vehicle_log_contract_inherit_tree" model="ir.ui.view">
+			<field name="name">fleet.vehicle.log.contract.inherit.tree</field>
+			<field name="model">fleet.vehicle.log.contract</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_tree" />
+			<field name="arch" type="xml">
+
+				<tree position="attributes">
+					<attribute name="colors">red:expiration_date &gt;= date_computation</attribute>
+				</tree>
+				<field name="expiration_date" position="after"><field name="date_computation" invisible="1"/></field>
+
 
 			</field>
 		</record>
+
+
+		<record id="fleet_vehicle_log_contract_inherit_form" model="ir.ui.view">
+			<field name="name">fleet.vehicle.log.contract.inherit.form</field>
+			<field name="model">fleet.vehicle.log.contract</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_form" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//form/header/button[@name='contract_open']" position="after">
+					<button modifiers="{'invisible': [['state', '=', 'completed']]}" name="document_complete" states="open" type="object" class="oe_highlight" string="Complete Document" groups="fleet.group_fleet_manager"/>
+				</xpath>
+
+
+			</field>
+		</record>
+
+
+
+		<record id="fleet_vehicle_log_fuel_inherit_form" model="ir.ui.view">
+			<field name="name">fleet.vehicle.log.fuel.inherit.form</field>
+			<field name="model">fleet.vehicle.log.fuel</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_log_fuel_form" />
+			<field name="arch" type="xml">
+
+				<xpath expr="//form/sheet/group[1]/group[1]/field[@name='vehicle_id']" position="after">
+					<field name="driver_id"/>
+				</xpath>
+
+
+				<xpath expr="//form/sheet/group[2]/group[1]/label[@for='odometer']" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+				<xpath expr="//form/sheet/group[2]/group[1]/div" position="attributes">
+					<attribute name='invisible'>1</attribute>
+				</xpath>
+
+				<xpath expr="//form/sheet/group[2]/group[1]" position="inside">
+					
+					<label for="start_odometer"/>
+					<div>
+						<field name="start_odometer" class="oe_inline"/>
+						<field name="odometer_unit" class="oe_inline"/>
+					</div>
+
+					<label for="last_odometer"/>
+					<div>
+						<field name="last_odometer" class="oe_inline"/>
+						<field name="odometer_unit1" class="oe_inline"/>
+					</div>
+
+				</xpath>
+
+			</field>
+		</record>
+
+
 	</data>
 </openerp>
