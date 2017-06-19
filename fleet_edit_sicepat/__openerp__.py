@@ -10,6 +10,7 @@
         'views/fleet_service_type.xml',
         'views/fleet_edit_view.xml',
         'views/fleet_tools_view.xml',
+        'views/template_email_fleet.xml',
     ],
     'installable': True,
 }

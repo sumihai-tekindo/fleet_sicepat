@@ -1,0 +1,56 @@
+<openerp>
+	<data>
+		<record id="email_template_service_ganti_oli" model="email.template">
+			<field name="name">Email Service Ganti Oli</field>
+			<field name="model_id" ref="fleet.model_fleet_vehicle_log_services"/>
+			<field name="auto_delete" eval="True"/>
+			<field name="email_from">${'general.affair@gmail.com'|safe}</field>
+			<field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field>
+			<field name="email_cc">Tim GA Pusat</field>
+			<field name="subject">Service Ganti Oli</field>
+			<field name="body_html"><![CDATA[<span>Dear, ${object.analytic_account.user_admin_id.name}</span>
+			<br/><br/>
+			<span>Berdasarkan perhitungan sistem, kendaraan dengan nomor plat ${object.vehicle_id.license_plate} akan mendekati masa service penggantian oli. Penggantian oli terakhir adalah pada kilometer ${object.vehicle_id.odometer}, dan seharusnya diganti pada kilometer ${object.vehicle_id.odometer+5000} (+ 5000 km). Mohon dilakukan penggantian oli jika kilometer kendaraan telah menyentuh angka tsb</span>
+			<br/><br/>
+			<span>Hormat Kami
+			<br/>
+			Team GA Pusat
+			<br/><br/>
+			Mardcelino</span>
+
+			]]>
+			</field>
+		</record>
+
+
+		<record id="email_template_perpanjangan_kir" model="email.template">
+			<field name="name">Email Perpanjangan KIR</field>
+			<field name="model_id" ref="fleet.model_fleet_vehicle_log_contract"/>
+			<field name="auto_delete" eval="True"/>
+			<field name="email_from">${'general.affair@gmail.com'|safe}</field>
+			<field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field>
+			<field name="email_cc">Tim GA Pusat</field>
+			<field name="subject">Perpanjangan KIR</field>
+			<field name="body_html"><![CDATA[<span>Dear, ${object.analytic_account.user_admin_id.name}</span>
+			<br/><br/>
+			<span>Berdasarkan perhitungan sistem, KIR untuk kendaraan dengan nomer plat ${object.vehicle_id.license_plate} akan habis pada tanggal ${object.expiration_date}. Mohon kirimkan dokumen yang dibutuhkan untuk perpanjangan KIR ke kantor pusat. Dokumen yg dibutuhkan adalah sbb:
+			<br/>
+			1. Buku KIR Asli
+			<br/>
+			2. Fotocopy STNK
+			<br/>
+			<br/>
+			</span>
+			<span>Hormat Kami
+			<br/>
+			Team GA Pusat
+			<br/><br/>
+			Mardcelino</span>
+
+			]]>
+			</field>
+		</record>
+
+
+	</data>
+</openerp>

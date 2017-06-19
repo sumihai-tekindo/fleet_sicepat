@@ -61,3 +61,11 @@ class fleet_vehicle_log_fuel(osv.osv):
 		'driver_id': fields.many2one('res.partner', 'Nama Supir', help='Driver of the vehicle'),
 		'odometer_unit1': fields.related('vehicle_id', 'odometer_unit', type="char", string="Unit", readonly=True),
 	}
+
+
+class fleet_vehicle_log_services(osv.osv):
+	_inherit = 'fleet.vehicle.log.services'
+
+	_columns = {
+		'analytic_account': fields.many2one('account.analytic.account','Analytic Account',help="Nama Admin Cabang")
+	}
