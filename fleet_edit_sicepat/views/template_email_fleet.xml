@@ -1,5 +1,6 @@
 <openerp>
 	<data>
+<!-- 1 -->
 		<record id="email_template_service_ganti_oli" model="email.template">
 			<field name="name">Email Service Ganti Oli</field>
 			<field name="model_id" ref="fleet.model_fleet_vehicle_log_services"/>
@@ -22,7 +23,7 @@
 			</field>
 		</record>
 
-
+<!-- 2 -->
 		<record id="email_template_perpanjangan_kir" model="email.template">
 			<field name="name">Email Perpanjangan KIR</field>
 			<field name="model_id" ref="fleet.model_fleet_vehicle_log_contract"/>
@@ -51,6 +52,60 @@
 			</field>
 		</record>
 
+
+<!-- 3 -->
+		<record id="email_template_perpanjangan_stnk" model="email.template">
+			<field name="name">Email Perpanjangan STNK</field>
+			<field name="model_id" ref="fleet.model_fleet_vehicle_log_contract"/>
+			<field name="auto_delete" eval="True"/>
+			<field name="email_from">${'general.affair@gmail.com'|safe}</field>
+			<field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field>
+			<field name="email_cc">Tim GA Pusat</field>
+			<field name="subject">Perpanjangan STNK 5 Tahunan</field>
+			<field name="body_html"><![CDATA[<span>Dear, ${object.analytic_account.user_admin_id.name}</span>
+			<br/><br/>
+			<span>Berdasarkan perhitungan sistem, STNK  5 Tahunan untuk kendaraan dengan nomer plat ${object.vehicle_id.license_plate} akan habis pada tanggal ${object.expiration_date}. Mohon kirimkan dokumen yg dibutuhkan untuk perpanjangan STNK  5 Tahunan ke kantor pusat. Dokumen yg dibutuhkan adalah sbb:
+			<br/>
+			1. STNK Asli
+			<br/>
+			<br/>
+			</span>
+			<span>Hormat Kami
+			<br/>
+			Team GA Pusat
+			<br/><br/>
+			Mardcelino</span>
+
+			]]>
+			</field>
+		</record>
+
+<!-- 4 -->
+	<record id="email_template_perpanjangan_pajak" model="email.template">
+			<field name="name">Email Perpanjangan Pajak Tahunan</field>
+			<field name="model_id" ref="fleet.model_fleet_vehicle_log_contract"/>
+			<field name="auto_delete" eval="True"/>
+			<field name="email_from">${'general.affair@gmail.com'|safe}</field>
+			<field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field>
+			<field name="email_cc">Tim GA Pusat</field>
+			<field name="subject">Perpanjangan Pajak Tahunan</field>
+			<field name="body_html"><![CDATA[<span>Dear, ${object.analytic_account.user_admin_id.name}</span>
+			<br/><br/>
+			<span>Berdasarkan perhitungan sistem, Pajak Tahunan untuk kendaraan dengan nomer plat  ${object.vehicle_id.license_plate} akan habis pada tanggal ${object.expiration_date}. Mohon kirimkan dokumen yg dibutuhkan untuk perpanjangan Pajak Tahunan ke kantor pusat. Dokumen yg dibutuhkan adalah sbb:
+			<br/>
+			1. STNK Asli
+			<br/>
+			<br/>
+			</span>
+			<span>Hormat Kami
+			<br/>
+			Team GA Pusat
+			<br/><br/>
+			Mardcelino</span>
+
+			]]>
+			</field>
+		</record>
 
 	</data>
 </openerp>

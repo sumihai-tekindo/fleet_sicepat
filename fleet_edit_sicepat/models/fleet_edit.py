@@ -41,6 +41,7 @@ class fleet_vehicle_log_contract(osv.osv):
 									'Status', readonly=True, help='Choose wheter the contract is still valid or not',
 									copy=False),
 		'date_computation': fields.function(_computedate,string='Computation',type="date"),
+		'analytic_account': fields.many2one('account.analytic.account','Analytic Account',help="Nama Admin Cabang"),
 	}
 
 	def document_complete(self,cr,uid,ids,context=None):
