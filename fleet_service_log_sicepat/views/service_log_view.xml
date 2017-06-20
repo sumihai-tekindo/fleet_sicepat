@@ -1,0 +1,77 @@
+<openerp>
+	<data>
+		<record id="fleet_vehicle_inherit_form" model="ir.ui.view">
+			<field name="name">fleet.vehicle.log.services.inherit.form</field>
+			<field name="model">fleet.vehicle.log.services</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_log_services_form" />
+			<field name="arch" type="xml">
+				<field name="vehicle_id" position="after">
+					<field name="supir_id" />
+				</field>
+		 	</field>
+		</record>
+
+		<record model="ir.ui.view" id="wizard_form_view">
+            <field name="name">wizard.form</field>
+            <field name="model">account.invoice.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Add Attendees">
+                    <group>
+                     	<field name="department_id" context="{'description_only':1}"/>
+                     	
+                        <p> semua isi dari invoice akan diajukan </p>
+                    </group>
+                    <footer>
+					<button name="subscribe" type="object"
+                                string="Subscribe" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+		<act_window id="launch_session_wizard"
+                    name="Create Pengajuan Dana"
+                    src_model="fleet.vehicle.log.services"
+                    res_model="account.invoice.wizard"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"/>
+
+
+
+
+        <record id="fleet_vehicle_service_types_tree" model="ir.ui.view">
+			<field name="name">fleet.vehicle.service.types.inherit.tree</field>
+			<field name="model">fleet.service.type</field>
+			<field name="inherit_id" ref="fleet.fleet_vehicle_service_types_tree" />
+			<field name="arch" type="xml">
+				<field name="category" position="after">
+					<field name="product_id" />
+				</field>
+		 	</field>
+		</record>
+
+		<record model="ir.ui.view" id="fleet_vehicle_service_types_view">
+            <field name="name">fleet.vehicle.service.types.inherit.form</field>
+            <field name="model">fleet.service.type</field>
+            <field name="arch" type="xml">
+                <form string="Course Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        	<field name="category"/>
+
+                        	<field name="product_id" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+		
+
+	</data>
+</openerp>

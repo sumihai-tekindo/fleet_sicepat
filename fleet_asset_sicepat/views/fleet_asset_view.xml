@@ -37,7 +37,6 @@
 							<group>
 								<field name="nomor_polisi" attrs="{'required':[('vehicle','=',True)]}"/>
 		                        <field name="model_name" attrs="{'required':[('vehicle','=',True)]}"/>
-		                        <field name="model_brand" attrs="{'required':[('vehicle','=',True)]}"/>
 		                        <field name="nomor_mesin" attrs="{'required':[('vehicle','=',True)]}"/>
 		                    </group>
 		                    <group>

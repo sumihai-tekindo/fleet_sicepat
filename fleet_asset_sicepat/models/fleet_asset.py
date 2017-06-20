@@ -23,12 +23,11 @@ class account_asset_asset(osv.osv):
 	_columns={
 		'vehicle': fields.boolean('Vehicle'),
 		'nomor_polisi': fields.char('No. Polisi', required=False),
-		'model_name': fields.char("Model Name", required=False),
-		'model_brand': fields.char("Model Brand", required=False),
+		'model_name': fields.many2one('fleet.vehicle.model',"Model Name", required=False),
+		# 'model_brand': fields.related('model_name','brand_id',string="Model Brand", readonly=True, type="many2one", relation="fleet.vehicle.model.brand"),
 		'nomor_mesin': fields.char("No. Mesin", required=False),
 		'warna': fields.char("Warna", required=False),
 		'tahun_pembuatan': fields.char("Tahun Pembuatan", required=False),
-
 	}
 
 
