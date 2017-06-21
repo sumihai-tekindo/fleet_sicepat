@@ -102,7 +102,7 @@
 			<field name="arch" type="xml">
 
 				<tree position="attributes">
-					<attribute name="colors">red:expiration_date &gt;= date_computation</attribute>
+					<attribute name="colors">red:expiration_date &lt;= date_computation</attribute>
 				</tree>
 				<field name="expiration_date" position="after"><field name="date_computation" invisible="1"/></field>
 
