@@ -117,8 +117,8 @@
 			<field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_form" />
 			<field name="arch" type="xml">
 
-				<xpath expr="//form/header/button[@name='contract_open']" position="after">
-					<button modifiers="{'invisible': [['state', '=', 'completed']]}" name="document_complete" states="open" type="object" class="oe_highlight" string="Complete Document" groups="fleet.group_fleet_manager"/>
+				<xpath expr="//form/header/button[@name='contract_close']" position="before">
+					<button modifiers="{'invisible': [['state', '=', 'closed']]}" name="contract_close" states="completed" type="object" class="oe_highlight" string="Terminate Contract" groups="fleet.group_fleet_manager"/>
 				</xpath>
 
 
