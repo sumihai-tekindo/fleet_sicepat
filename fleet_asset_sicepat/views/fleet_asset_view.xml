@@ -19,8 +19,14 @@
 			<field name="arch" type="xml">
 
 				<xpath expr="//form/header/button[@name='validate']" position="after">
-					<button name="confirm_vehicle" attrs="{'invisible':[('vehicle','=',False)]}" string="Confirm Vehicle" type="object" class="oe_highlight"/>
+					<button name="confirm_vehicle" attrs="{'invisible':['|',('vehicle','=',False),('confirmed','=',True)]}"  string="Confirm Vehicle" type="object" class="oe_highlight"/>
 				</xpath>
+
+				<xpath expr="//field[@name='move_out_id']" position="after">
+					<field name='fleet_id'/>
+				</xpath>
+
+
 
 				<field name="category_id" position="attributes">
 					<attribute name="onchange">onchange_category(category_id)</attribute>
@@ -28,6 +34,7 @@
 				<field name="category_id" position="after">
 					<field name="vehicle" invisible="1"/>
 				</field>
+
 
 				
 
@@ -38,10 +45,19 @@
 								<field name="nomor_polisi" attrs="{'required':[('vehicle','=',True)]}"/>
 		                        <field name="model_name" attrs="{'required':[('vehicle','=',True)]}"/>
 		                        <field name="nomor_mesin" attrs="{'required':[('vehicle','=',True)]}"/>
+		                        <field name="stnk" attrs="{'required':[('vehicle','=',True)]}"/>
+		                        <field name="bpkb" attrs="{'required':[('vehicle','=',True)]}"/>
+		                        <field name="tipe_kendaraan" attrs="{'required':[('vehicle','=',True)]}"/>
 		                    </group>
 		                    <group>
+		                    	<field name="kir" attrs="{'required':[('vehicle','=',True)]}"/>
+		                    	<field name="vin_sn" attrs="{'required':[('vehicle','=',True)]}"/>
+		                    	<field name="fuel_type" attrs="{'required':[('vehicle','=',True)]}"/>
+		                    	<field name="transmission" attrs="{'required':[('vehicle','=',True)]}"/>
 		                    	<field name="warna" attrs="{'required':[('vehicle','=',True)]}"/>
 		                        <field name="tahun_pembuatan" attrs="{'required':[('vehicle','=',True)]}"/>
+		                        <field name="confirmed" invisible='1'/>
+
 		                    </group>
 		                    <group>
 		                    	

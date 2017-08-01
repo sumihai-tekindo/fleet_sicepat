@@ -17,13 +17,14 @@ class fleet_vehicle(osv.osv):
 		'no_mesin':fields.char('No. Mesin', required=True),
 		'vin_sn': fields.char('No. Rangka', required=True,copy=False),
 		'tahun_pembuatan':fields.char('Tahun Pembuatan', required=True),
-		'analytic_account':fields.many2one('account.analytic.account', "Analytic Account", required=True),
+		'analytic_account':fields.many2one('account.analytic.account', "Analytic Account", required=False),
 		'tipe_kendaraan':fields.selection([('roda2', 'Roda 2'),('roda3','Roda 3'),('roda4','Roda 4'),('rodalebih','Roda >4')], 'Tipe Kendaraan', required=True),
 		'sticker':fields.boolean('Sticker', required=True),
 		'color': fields.char('Color', help='Color of the vehicle',required=True),
 		'transmission': fields.selection([('manual', 'Manual'), ('automatic', 'Automatic')], 'Transmission', help='Transmission Used by the vehicle',required=True),
-		'fuel_type': fields.selection([('gasoline', 'Gasoline'), ('diesel', 'Diesel'), ('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle',required=True),
+		'fuel_type': fields.selection([('gasoline', 'Gasoline'), ('diesel', 'Diesel'), ('solar','Solar'),('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle',required=True),
 		'tools_ids': fields.one2many('vehicle.fleet.tools','fleet_id',"Tools"),
+		'nama_perusahaan' : fields.char('Nama Perusahaan', help="Nama pemilik BPKB"),
 	}
 
 
@@ -42,6 +43,7 @@ class fleet_vehicle_log_contract(osv.osv):
 									copy=False),
 		'date_computation': fields.function(_computedate,string='Computation',type="date"),
 		'analytic_account': fields.many2one('account.analytic.account','Analytic Account',help="Nama Admin Cabang"),
+		'mail_id': fields.many2one('mail.mail',"Mail"),
 	}
 
 	def document_complete(self,cr,uid,ids,context=None):
@@ -91,10 +93,10 @@ class fleet_vehicle_log_contract(osv.osv):
 
 	def email_perpanjangan_kir(self,cr,uid,ids=None,context=None):
 		Mail = self.pool.get('mail.mail')
-		template_id = self.pool.get('ir.model.data').get_object_reference(cr,uid,"fleet_edit_sicepat","email_template_service_perpanjangan_kir")
+		template_id = self.pool.get('ir.model.data').get_object_reference(cr,uid,"fleet_edit_sicepat","email_template_perpanjangan_kir")
 		res_model, res_id = self.pool.get('ir.model.data').get_object_reference(cr, uid,'fleet_edit_sicepat','service_type_kir')
 		if not ids:
-			ids = self.pool.get('fleet.vehicle.log.contract').search(cr,uid,[('cost_subtype_id', '=', res_id), ('expiration_date', '<=', 'date_computation')])
+			ids = self.pool.get('fleet.vehicle.log.contract').search(cr,uid,[('cost_subtype_id', '=', res_id),('mail_id','=',False), ('expiration_date', '<=', 'date_computation')])
 		vehicle_contract = self.pool.get('fleet.vehicle.log.contract').browse(cr, uid, ids)
 
 		for vc in vehicle_contract:
@@ -107,7 +109,7 @@ class fleet_vehicle_log_contract(osv.osv):
 			if 'email_from' in values and not values.get('email_from'):
 				values.pop('email_from')
 			mail_id = Mail.create(cr,uid,values)
-	
+			vc.mail_id = mail_id	
 
 
 		
@@ -118,7 +120,7 @@ class fleet_vehicle_log_contract(osv.osv):
 		template_id = self.pool.get('ir.model.data').get_object_reference(cr,uid,"fleet_edit_sicepat","email_template_perpanjangan_stnk")
 		res_model, res_id = self.pool.get('ir.model.data').get_object_reference(cr, uid,'fleet_edit_sicepat','service_type_stnk')
 		if not ids:
-			ids = self.pool.get('fleet.vehicle.log.contract').search(cr,uid,[('cost_subtype_id', '=', res_id), ('expiration_date', '<=', 'date_computation')])
+			ids = self.pool.get('fleet.vehicle.log.contract').search(cr,uid,[('cost_subtype_id', '=', res_id), ('mail_id','=',False), ('expiration_date', '<=', 'date_computation')])
 		vehicle_contract = self.pool.get('fleet.vehicle.log.contract').browse(cr, uid, ids)
 
 		for vc in vehicle_contract:
@@ -139,7 +141,7 @@ class fleet_vehicle_log_contract(osv.osv):
 		template_id = self.pool.get('ir.model.data').get_object_reference(cr,uid,"fleet_edit_sicepat","email_template_perpanjangan_pajak")
 		res_model, res_id = self.pool.get('ir.model.data').get_object_reference(cr, uid,'fleet_edit_sicepat','service_type_pajak')
 		if not ids:
-			ids = self.pool.get('fleet.vehicle.log.contract').search(cr,uid,[('cost_subtype_id', '=', res_id), ('expiration_date', '<=', 'date_computation')])
+			ids = self.pool.get('fleet.vehicle.log.contract').search(cr,uid,[('cost_subtype_id', '=', res_id), ('mail_id','=',False), ('expiration_date', '<=', 'date_computation')])
 		vehicle_contract = self.pool.get('fleet.vehicle.log.contract').browse(cr, uid, ids)
 
 		for vc in vehicle_contract:
@@ -160,7 +162,7 @@ class fleet_vehicle_log_fuel(osv.osv):
 
 
 	_columns = {
-		'start_odometer': fields.float('Odometer Sekarang'),
+		'current_odometer': fields.float('Odometer Sekarang'),
 		'last_odometer': fields.float('Odometer Terakhir'),
 		'driver_id': fields.many2one('res.partner', 'Nama Supir', help='Driver of the vehicle'),
 		'odometer_unit1': fields.related('vehicle_id', 'odometer_unit', type="char", string="Unit", readonly=True),

@@ -12,6 +12,7 @@
 					<field name='stnk'/>
 					<field name='bpkb'/>
 					<field name='kir'/>
+					<field name='nama_perusahaan'/>
 				</xpath>
 
 
@@ -117,7 +118,11 @@
 			<field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_form" />
 			<field name="arch" type="xml">
 
+
+
+
 				<xpath expr="//form/header/button[@name='contract_close']" position="before">
+					<button modifiers="{'invisible': [['state', '=', 'closed']]}" name="document_complete" states="open" type="object" class="oe_highlight" string="Document Completed" groups="fleet.group_fleet_manager"/>
 					<button modifiers="{'invisible': [['state', '=', 'closed']]}" name="contract_close" states="completed" type="object" class="oe_highlight" string="Terminate Contract" groups="fleet.group_fleet_manager"/>
 				</xpath>
 
@@ -147,9 +152,9 @@
 
 				<xpath expr="//form/sheet/group[2]/group[1]" position="inside">
 					
-					<label for="start_odometer"/>
+					<label for="current_odometer"/>
 					<div>
-						<field name="start_odometer" class="oe_inline"/>
+						<field name="current_odometer" class="oe_inline"/>
 						<field name="odometer_unit" class="oe_inline"/>
 					</div>
 

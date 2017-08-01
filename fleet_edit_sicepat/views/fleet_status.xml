@@ -1,0 +1,24 @@
+<openerp>
+	<data>
+		<record id="fleet_status_inshop" model="fleet.vehicle.state">
+            <field name="name">In Shop</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="fleet_status_active" model="fleet.vehicle.state">
+            <field name="name">Active</field>
+            <field name="sequence">2</field>
+        </record>
+
+        <record id="fleet_status_inactive" model="fleet.vehicle.state">
+            <field name="name">Inactive</field>
+            <field name="sequence">3</field>
+        </record>
+
+        <record id="fleet_status_sold" model="fleet.vehicle.state">
+            <field name="name">Sold</field>
+            <field name="sequence">4</field>
+        </record>
+
+	</data>
+</openerp>
