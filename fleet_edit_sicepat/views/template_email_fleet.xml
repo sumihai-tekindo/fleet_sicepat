@@ -6,7 +6,8 @@
 			<field name="model_id" ref="fleet.model_fleet_vehicle_log_services"/>
 			<field name="auto_delete" eval="True"/>
 			<field name="email_from">${'general.affair@gmail.com'|safe}</field>
-			<field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field>
+			<!-- <field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field> -->
+			<field name="email_to">${'andreanw96@gmail.com'|safe}</field>
 			<field name="email_cc">Tim GA Pusat</field>
 			<field name="subject">Service Ganti Oli</field>
 			<field name="body_html"><![CDATA[<span>Dear, ${object.analytic_account.user_admin_id.name}</span>
@@ -29,7 +30,8 @@
 			<field name="model_id" ref="fleet.model_fleet_vehicle_log_contract"/>
 			<field name="auto_delete" eval="True"/>
 			<field name="email_from">${'general.affair@gmail.com'|safe}</field>
-			<field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field>
+			<!-- <field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field> -->
+			<field name="email_to">${'andreanw96@gmail.com'|safe}</field>
 			<field name="email_cc">Tim GA Pusat</field>
 			<field name="subject">Perpanjangan KIR</field>
 			<field name="body_html"><![CDATA[<span>Dear, ${object.analytic_account.user_admin_id.name}</span>
@@ -59,7 +61,8 @@
 			<field name="model_id" ref="fleet.model_fleet_vehicle_log_contract"/>
 			<field name="auto_delete" eval="True"/>
 			<field name="email_from">${'general.affair@gmail.com'|safe}</field>
-			<field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field>
+			<!-- <field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field> -->
+			<field name="email_to">${'andreanw96@gmail.com'|safe}</field>
 			<field name="email_cc">Tim GA Pusat</field>
 			<field name="subject">Perpanjangan STNK 5 Tahunan</field>
 			<field name="body_html"><![CDATA[<span>Dear, ${object.analytic_account.user_admin_id.name}</span>
@@ -86,7 +89,8 @@
 			<field name="model_id" ref="fleet.model_fleet_vehicle_log_contract"/>
 			<field name="auto_delete" eval="True"/>
 			<field name="email_from">${'general.affair@gmail.com'|safe}</field>
-			<field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field>
+			<!-- <field name="email_to">${(object.analytic_account.user_admin_id != False and object.analytic_account.user_admin_id.email)|safe}</field> -->
+			<field name="email_to">${'andreanw96@gmail.com'|safe}</field>
 			<field name="email_cc">Tim GA Pusat</field>
 			<field name="subject">Perpanjangan Pajak Tahunan</field>
 			<field name="body_html"><![CDATA[<span>Dear, ${object.analytic_account.user_admin_id.name}</span>

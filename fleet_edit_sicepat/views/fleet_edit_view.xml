@@ -103,7 +103,7 @@
 			<field name="arch" type="xml">
 
 				<tree position="attributes">
-					<attribute name="colors">red:expiration_date &lt;= date_computation</attribute>
+					<attribute name="colors">gray:state=='closed';red:expiration_date&lt;=date_computation</attribute>
 				</tree>
 				<field name="expiration_date" position="after"><field name="date_computation" invisible="1"/></field>
 
@@ -122,7 +122,7 @@
 
 
 				<xpath expr="//form/header/button[@name='contract_close']" position="before">
-					<button modifiers="{'invisible': [['state', '=', 'closed']]}" name="document_complete" states="open" type="object" class="oe_highlight" string="Document Completed" groups="fleet.group_fleet_manager"/>
+					<button modifiers="{'invisible': [['state', '=', 'closed'],['state','=','open']]}" name="document_complete" states="open" type="object" class="oe_highlight" string="Document Completed" groups="fleet.group_fleet_manager"/>
 					<button modifiers="{'invisible': [['state', '=', 'closed']]}" name="contract_close" states="completed" type="object" class="oe_highlight" string="Terminate Contract" groups="fleet.group_fleet_manager"/>
 				</xpath>
 

@@ -33,7 +33,7 @@ class account_asset_asset(osv.osv):
 		'stnk': fields.char("No. STNK", required=False),
 		'bpkb': fields.char("No. BPKB", required=False),
 		'kir': fields.char("No. Buku KIR", required=False),
-		'fuel_type': fields.selection([('gasoline', 'Gasoline'), ('diesel', 'Diesel'), ('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle',required=False),
+		'fuel_type': fields.selection([('gasoline', 'Gasoline'), ('diesel', 'Diesel'), ('electric', 'Electric'), ('solar','Solar'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle',required=False),
 		'tipe_kendaraan':fields.selection([('roda2', 'Roda 2'),('roda3','Roda 3'),('roda4','Roda 4'),('rodalebih','Roda >4')], 'Tipe Kendaraan', required=False),
 		'transmission': fields.selection([('manual', 'Manual'), ('automatic', 'Automatic')], 'Transmission', help='Transmission Used by the vehicle',required=False),
 		'fleet_id':fields.many2one('fleet.vehicle',"Fleet",required=False)

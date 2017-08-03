@@ -38,12 +38,13 @@ class fleet_vehicle_log_contract(osv.osv):
 		return res
 
 	_columns = {
-		'state': fields.selection([('open', 'In Progress'), ('completed','Document Completed'), ('toclose','To Close'), ('closed', 'Terminated')],
+		'state': fields.selection([('open', 'In Progress'),  ('toclose','To Close'), ('completed','Document Completed'), ('closed', 'Terminated')],
 									'Status', readonly=True, help='Choose wheter the contract is still valid or not',
 									copy=False),
 		'date_computation': fields.function(_computedate,string='Computation',type="date"),
 		'analytic_account': fields.many2one('account.analytic.account','Analytic Account',help="Nama Admin Cabang"),
 		'mail_id': fields.many2one('mail.mail',"Mail"),
+		'cost_frequency': fields.selection([('no','No'), ('daily', 'Daily'), ('weekly','Weekly'), ('monthly','Monthly'),('6months','6 Months'), ('yearly','Yearly'),('5years','5 Years')], 'Recurring Cost Frequency', help='Frequency of the recuring cost', required=True),
 	}
 
 	def document_complete(self,cr,uid,ids,context=None):
@@ -175,3 +176,5 @@ class fleet_vehicle_log_services(osv.osv):
 	_columns = {
 		'analytic_account': fields.many2one('account.analytic.account','Analytic Account',help="Nama Admin Cabang")
 	}
+
+
