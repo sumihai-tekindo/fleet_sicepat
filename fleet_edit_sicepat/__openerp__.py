@@ -11,7 +11,6 @@
         'views/fleet_edit_view.xml',
         'views/fleet_tools_view.xml',
         'views/template_email_fleet.xml',
-        'views/schedule_email_fleet.xml',
         'views/fleet_status.xml',
         'views/cron_fleet.xml',
     ],

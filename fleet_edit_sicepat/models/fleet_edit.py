@@ -12,9 +12,11 @@ class fleet_vehicle(osv.osv):
 
 	_columns = {
 		'stnk': fields.char('No. STNK', required=True),
-		'bpkb': fields.char('No. BPKB', required=True),
+		# 'bpkb': fields.char('No. BPKB', required=True),
+		'bpkb': fields.char('No. BPKB'),
 		'kir': fields.char('No. Buku KIR', required=True),
-		'no_mesin':fields.char('No. Mesin', required=True),
+		# 'no_mesin':fields.char('No. Mesin', required=True),
+		'no_mesin':fields.char('No. Mesin'),
 		'vin_sn': fields.char('No. Rangka', required=True,copy=False),
 		'tahun_pembuatan':fields.char('Tahun Pembuatan', required=True),
 		'analytic_account':fields.many2one('account.analytic.account', "Analytic Account", required=False),
@@ -41,7 +43,7 @@ class fleet_vehicle_log_contract(osv.osv):
 		'state': fields.selection([('open', 'In Progress'),  ('toclose','To Close'), ('completed','Document Completed'), ('closed', 'Terminated')],
 									'Status', readonly=True, help='Choose wheter the contract is still valid or not',
 									copy=False),
-		'date_computation': fields.function(_computedate,string='Computation',type="date"),
+		'date_computation': fields.function(_computedate,string='Computation',type="date",store=True),
 		'analytic_account': fields.many2one('account.analytic.account','Analytic Account',help="Nama Admin Cabang"),
 		'mail_id': fields.many2one('mail.mail',"Mail"),
 		'cost_frequency': fields.selection([('no','No'), ('daily', 'Daily'), ('weekly','Weekly'), ('monthly','Monthly'),('6months','6 Months'), ('yearly','Yearly'),('5years','5 Years')], 'Recurring Cost Frequency', help='Frequency of the recuring cost', required=True),

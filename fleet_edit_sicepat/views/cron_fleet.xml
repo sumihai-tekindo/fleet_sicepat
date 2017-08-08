@@ -1,5 +1,5 @@
 <openerp>
-	<data noupdate="1">
+	<data>
         <record forcecreate="True" id="cron_email_ganti_oli" model="ir.cron">
             <field name="name">Email Ganti Oli</field>
             <field eval="'fleet.vehicle.log.services'" name="model"/>
@@ -8,7 +8,7 @@
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
-            <field eval="False" name="active"/>
+            <field eval="True" name="active"/>
             <field eval="True" name="doall"/>
             <field eval="5" name="priority"/>
             <field name="user_id" ref="base.user_root"/>
@@ -22,7 +22,7 @@
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
-            <field eval="False" name="active"/>
+            <field eval="True" name="active"/>
             <field eval="True" name="doall"/>
             <field eval="5" name="priority"/>
             <field name="user_id" ref="base.user_root"/>
@@ -36,7 +36,7 @@
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
-            <field eval="False" name="active"/>
+            <field eval="True" name="active"/>
             <field eval="True" name="doall"/>
             <field eval="5" name="priority"/>
             <field name="user_id" ref="base.user_root"/>
@@ -50,7 +50,7 @@
             <field name="interval_number">1</field>
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
-            <field eval="False" name="active"/>
+            <field eval="True" name="active"/>
             <field eval="True" name="doall"/>
             <field eval="5" name="priority"/>
             <field name="user_id" ref="base.user_root"/>
