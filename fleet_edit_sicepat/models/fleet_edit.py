@@ -7,6 +7,7 @@ from openerp.tools.translate import _
 from dateutil.relativedelta import relativedelta
 
 
+
 class fleet_vehicle(osv.osv):
 	_inherit = 'fleet.vehicle'
 
@@ -30,6 +31,16 @@ class fleet_vehicle(osv.osv):
 	}
 
 
+_intervalTypes = {
+    'daily': relativedelta(days=1),
+    'weekly': relativedelta(days=7),
+    'monthly': relativedelta(months=1),
+    '6months': relativedelta(months=6),
+    'yearly': relativedelta(years=1),
+    '5years': relativedelta(years=5),
+}
+
+
 class fleet_vehicle_log_contract(osv.osv):
 	_inherit = 'fleet.vehicle.log.contract'
 
@@ -46,8 +57,25 @@ class fleet_vehicle_log_contract(osv.osv):
 		'date_computation': fields.function(_computedate,string='Computation',type="date",store=True),
 		'analytic_account': fields.many2one('account.analytic.account','Analytic Account',help="Nama Admin Cabang"),
 		'mail_id': fields.many2one('mail.mail',"Mail"),
-		'cost_frequency': fields.selection([('no','No'), ('daily', 'Daily'), ('weekly','Weekly'), ('monthly','Monthly'),('6months','6 Months'), ('yearly','Yearly'),('5years','5 Years')], 'Recurring Cost Frequency', help='Frequency of the recuring cost', required=True),
+		'cost_frequency': fields.selection([('no','No'), 
+											('daily', 'Daily'), 
+											('weekly','Weekly'), 
+											('monthly','Monthly'),
+											('6months','6 Months'), 
+											('yearly','Yearly'),
+											('5years','5 Years')], 
+											'Recurring Cost Frequency', help='Frequency of the recuring cost', required=True),
 	}
+
+	def onchange_expired(self,cr,uid,ids,cost_frequency,start_date,context=None):
+		expiration_date = datetime.datetime.today()
+		if cost_frequency and cost_frequency != 'no':
+			print "================================================",cost_frequency
+			print "================================================",_intervalTypes[cost_frequency]
+			expiration_date = datetime.datetime.strptime(start_date,'%Y-%m-%d') + _intervalTypes[cost_frequency]
+
+		return {'value': {'expiration_date': expiration_date.strftime('%Y-%m-%d')}}
+
 
 	def document_complete(self,cr,uid,ids,context=None):
 		return self.write(cr, uid, ids, {'state': 'completed'}, context=context)

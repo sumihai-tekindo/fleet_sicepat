@@ -118,7 +118,9 @@
 			<field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_form" />
 			<field name="arch" type="xml">
 
-
+				<xpath expr="//form/sheet/group[1]/group[1]/div/field[@name='cost_frequency']" position="attributes">
+					<attribute name="on_change">onchange_expired(cost_frequency,start_date)</attribute>
+				</xpath>
 
 
 				<xpath expr="//form/header/button[@name='contract_close']" position="before">
