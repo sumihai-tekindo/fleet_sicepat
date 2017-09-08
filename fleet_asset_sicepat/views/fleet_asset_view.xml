@@ -42,20 +42,20 @@
 					<page string="Vehicle" attrs="{'invisible':[('vehicle','=',False)]}">
 						<group>
 							<group>
-								<field name="nomor_polisi" attrs="{'required':[('vehicle','=',True)]}"/>
-		                        <field name="model_name" attrs="{'required':[('vehicle','=',True)]}"/>
-		                        <field name="nomor_mesin" attrs="{'required':[('vehicle','=',True)]}"/>
-		                        <field name="stnk" attrs="{'required':[('vehicle','=',True)]}"/>
-		                        <field name="bpkb" attrs="{'required':[('vehicle','=',True)]}"/>
-		                        <field name="tipe_kendaraan" attrs="{'required':[('vehicle','=',True)]}"/>
+								<field name="nomor_polisi"/>
+		                        <field name="model_name"/>
+		                        <field name="nomor_mesin"/>
+		                        <field name="stnk"/>
+		                        <field name="bpkb"/>
+		                        <field name="tipe_kendaraan"/>
 		                    </group>
 		                    <group>
-		                    	<field name="kir" attrs="{'required':[('vehicle','=',True)]}"/>
-		                    	<field name="vin_sn" attrs="{'required':[('vehicle','=',True)]}"/>
-		                    	<field name="fuel_type" attrs="{'required':[('vehicle','=',True)]}"/>
-		                    	<field name="transmission" attrs="{'required':[('vehicle','=',True)]}"/>
-		                    	<field name="warna" attrs="{'required':[('vehicle','=',True)]}"/>
-		                        <field name="tahun_pembuatan" attrs="{'required':[('vehicle','=',True)]}"/>
+		                    	<field name="kir"/>
+		                    	<field name="vin_sn"/>
+		                    	<field name="fuel_type"/>
+		                    	<field name="transmission"/>
+		                    	<field name="warna"/>
+		                        <field name="tahun_pembuatan"/>
 		                        <field name="confirmed" invisible='1'/>
 
 		                    </group>
