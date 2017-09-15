@@ -37,6 +37,7 @@ _intervalTypes = {
     'monthly': relativedelta(months=1),
     '6months': relativedelta(months=6),
     'yearly': relativedelta(years=1),
+    '2years': relativedelta(years=2),
     '5years': relativedelta(years=5),
 }
 
@@ -63,6 +64,7 @@ class fleet_vehicle_log_contract(osv.osv):
 											('monthly','Monthly'),
 											('6months','6 Months'), 
 											('yearly','Yearly'),
+											('2years','2 Years'),
 											('5years','5 Years')], 
 											'Recurring Cost Frequency', help='Frequency of the recuring cost', required=True),
 	}
