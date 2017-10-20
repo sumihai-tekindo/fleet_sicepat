@@ -19,7 +19,7 @@
 			<field name="arch" type="xml">
 
 				<xpath expr="//form/header/button[@name='validate']" position="after">
-					<button name="confirm_vehicle" attrs="{'invisible':['|',('vehicle','=',False),('confirmed','=',True)]}"  string="Confirm Vehicle" type="object" class="oe_highlight"/>
+					<button name="confirm_vehicle" attrs="{'invisible':['|',('vehicle','=',False),('fleet_id','!=',False)]}"  string="Confirm Vehicle" type="object" class="oe_highlight"/>
 				</xpath>
 
 				<xpath expr="//field[@name='move_out_id']" position="after">
