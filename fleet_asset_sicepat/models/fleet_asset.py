@@ -77,8 +77,10 @@ class account_asset_asset(osv.osv):
                     'fuel_type':asset.fuel_type,
                     'transmission':asset.transmission,
                 }
-
-               	fleet_id = self.pool.get('fleet.vehicle').create(cr, uid, vals, context=context)
+                if not asset.fleet_id:
+               		fleet_id = self.pool.get('fleet.vehicle').create(cr, uid, vals, context=context)
+               		if fleet_id:
+               			asset.write({'fleet_id':fleet_id})
 
 		return self.write(cr, uid, ids, {
 			'state':'open',
