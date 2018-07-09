@@ -28,6 +28,8 @@ class fleet_vehicle(osv.osv):
 		'fuel_type': fields.selection([('gasoline', 'Gasoline'), ('diesel', 'Diesel'), ('solar','Solar'),('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle',required=False),
 		'tools_ids': fields.one2many('vehicle.fleet.tools','fleet_id',"Tools"),
 		'nama_perusahaan' : fields.char('Nama Perusahaan', help="Nama pemilik BPKB"),
+		'active':fields.boolean('active'),
+		
 	}
 
 

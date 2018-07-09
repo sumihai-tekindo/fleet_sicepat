@@ -26,6 +26,7 @@
 				<xpath expr="//form/sheet/group[2]/group[1]/field[@name='color']" position="after">
 					<field name='tipe_kendaraan'/>
 					<field name='sticker'/>
+					<field name='active'/>
 				</xpath>
 				
 				<xpath expr="//form/sheet/group[2]" position="after">
