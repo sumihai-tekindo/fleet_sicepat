@@ -20,6 +20,7 @@
 					<field name='no_mesin'/>
 					<field name='tahun_pembuatan'/>
 					<field name="analytic_account" groups="analytic.group_analytic_accounting"/>
+					<field name="owner" domain="[('supplier','=',True)]"/>
 				</xpath>
 
 
