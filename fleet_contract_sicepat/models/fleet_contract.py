@@ -78,7 +78,13 @@ class fleet_vehicle_log_contract(osv.osv):
 		self.pool['account.invoice.line'].create(cr, uid, rent_vals,context=context)		
 		record.invoice_id=True 
 
+	
+	def act_renew_contract(self,cr,uid,ids,context=None):
+		return self.write(cr, uid, ids, {'state': 'toclose'}, context=context)
+		super(fleet_vehicle_log_contract,self).act_renew_contract()
 
+      
+      
 	
 	def return_supplier_invoice(self, cr, uid, ids, insurer_id,context=None):
 		contracts = self.pool.get('fleet.vehicle.log.contract').browse(cr,uid,ids,context=context)
