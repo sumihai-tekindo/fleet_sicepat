@@ -27,7 +27,7 @@
 				<field name="invoice_id" invisible="1"/>
 			</field>
 			 <field name="expiration_date" position="after">
-				<field name="department_id" context="{'description_only': 1}" />
+				<field name="department_id" context="{'description_only': 1}" options='{"always_reload": True}'/>
 			
 			</field> 
 		

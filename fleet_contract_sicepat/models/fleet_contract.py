@@ -60,14 +60,14 @@ class fleet_vehicle_log_contract(osv.osv):
 			'partner_id':record.insurer_id.id,
 			'account_id':record.insurer_id.property_account_payable.id,
 			'currency_id':record.insurer_id.company_id.currency_id.id,
-			'department_id':record.department_id,
+			'department_id':record.department_id.id,
 			'date_invoice':record.date,
 			'sewa':True,
 			'date_start':start_date,
 			'date_end':end_date1,
 			'fleet_log_contract_id': record.id,
 			}
-		# print "vals================",vals
+		
 		account=self.pool['account.invoice'].create(cr, uid, vals,context=context) 
 		product=record.product_id
 		cost_subtype_id=record.cost_subtype_id.id
