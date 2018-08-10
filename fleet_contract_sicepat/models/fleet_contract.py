@@ -8,6 +8,7 @@ from dateutil.relativedelta import relativedelta
 global invoice,account_id,invoice_id,insurer_id,insurer_id_obj,element
 
 
+
 class account_invoice(osv.osv):
 	_inherit = "account.invoice"
 
@@ -86,8 +87,6 @@ class fleet_vehicle_log_contract(osv.osv):
 
 	# def close(self,cr,uid,ids,context=None):
 	# 	self.write(cr, uid, ids, {'state': 'toclose'}, context=context)
-		super(fleet_vehicle_log_contract,self).act_renew_contract()
-
 	
 	def return_supplier_invoice(self, cr, uid, ids, insurer_id,context=None):
 		contracts = self.pool.get('fleet.vehicle.log.contract').browse(cr,uid,ids,context=context)

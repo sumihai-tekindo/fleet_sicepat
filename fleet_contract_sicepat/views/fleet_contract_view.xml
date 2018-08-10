@@ -46,6 +46,7 @@
 			<field name="arch" type="xml">
 				<tree position="attributes">
 					<attribute name="colors">red:days_left &lt;= 14; blue:days_left &gt;=15 and days_left &lt;= 30</attribute>
+
 				</tree>
 		
 			</field>
