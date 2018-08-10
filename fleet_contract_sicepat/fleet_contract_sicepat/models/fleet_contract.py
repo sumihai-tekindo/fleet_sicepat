@@ -5,7 +5,7 @@ from openerp import tools
 from openerp.osv.orm import except_orm
 from openerp.tools.translate import _
 from dateutil.relativedelta import relativedelta
-global invoice,account_id,invoice_id,insurer_id,insurer_id_obj,element
+global invoice,account_id,invoice_id,insurer_id,insurer_id_obj
 
 
 class account_invoice(osv.osv):
@@ -78,15 +78,6 @@ class fleet_vehicle_log_contract(osv.osv):
 		self.pool['account.invoice.line'].create(cr, uid, rent_vals,context=context)		
 		record.invoice_id=True 
 
-	
-	def act_renew_contract(self,cr,uid,ids,context=None):
-		self.write(cr, uid, ids, {'state': 'toclose'}, context=context)
-
-	# 	return super(fleet_vehicle_log_contract,self).act_renew_contract(cr, uid, ids,context=context)
-
-	# def close(self,cr,uid,ids,context=None):
-	# 	self.write(cr, uid, ids, {'state': 'toclose'}, context=context)
-		super(fleet_vehicle_log_contract,self).act_renew_contract()
 
 	
 	def return_supplier_invoice(self, cr, uid, ids, insurer_id,context=None):

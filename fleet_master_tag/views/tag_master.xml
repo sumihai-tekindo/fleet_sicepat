@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+		
+	
+	<!-- action form window(delete, create) -->
+	<record model ="ir.actions.act_window" id="fleet_tag_action">
+		<field name="name">Fleet Tags</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">fleet.vehicle.tag</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+<!-- action form window(tree) -->
+	<record model = "ir.ui.view" id ="fleet_tag_tree_view">
+		<field name="name">fleet.vehicle.tag.tree</field>
+		<field name="model">fleet.vehicle.tag</field>
+		<field name="arch" type="xml">
+			<tree string="Fleet Tag">
+					<field name="name"/>
+			</tree>
+		</field>
+	</record>  
+	<!-- menampillkan tree sebelah form (edit,delete) -->
+	<record model = "ir.ui.view" id ="fleet_tag_form_view">
+		<field name="name">fleet.vehicle.tag.form</field>
+		<field name="model">fleet.vehicle.tag</field>
+		<field name="arch" type="xml">
+			<form string="Fleet Tag">
+					<group col="1">
+						 <field name="name"/>
+					</group>
+				</form>
+			
+		</field>
+	</record>
+ <menuitem action="fleet_tag_action" 
+ 			parent="fleet.fleet_configuration" 
+ 			id="fleet_tag_menu" 
+ 			groups="fleet.group_fleet_user"/>
+	</data>
+</openerp>
