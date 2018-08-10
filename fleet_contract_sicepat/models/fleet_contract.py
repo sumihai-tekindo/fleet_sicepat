@@ -64,8 +64,8 @@ class fleet_vehicle_log_contract(osv.osv):
 			'department_id':record.department_id.id,
 			'date_invoice':record.date,
 			'sewa':True,
-			'date_start':start_date,
-			'date_end':end_date1,
+			'date_start':record.start_date,
+			'date_end':record.expiration_date,
 			'fleet_log_contract_id': record.id,
 			}
 		
@@ -83,14 +83,12 @@ class fleet_vehicle_log_contract(osv.osv):
 	def act_renew_contract(self,cr,uid,ids,context=None):
 		self.write(cr, uid, ids, {'state': 'toclose'}, context=context)
 
-	# 	return super(fleet_vehicle_log_contract,self).act_renew_contract(cr, uid, ids,context=context)
+	 	return super(fleet_vehicle_log_contract,self).act_renew_contract(cr, uid, ids,context=context)
 
-	# def close(self,cr,uid,ids,context=None):
-	# 	self.write(cr, uid, ids, {'state': 'toclose'}, context=context)
+
 	
 	def return_supplier_invoice(self, cr, uid, ids, insurer_id,context=None):
 		contracts = self.pool.get('fleet.vehicle.log.contract').browse(cr,uid,ids,context=context)
-		# partners = [c.insurer_id.id for c in contracts if c.insurer_id]
 		domain = [('fleet_log_contract_id','in',ids)]
 		invoice_ids = self.pool.get('account.invoice').search(cr,uid,domain)
 		context_domain = [('id','in',invoice_ids)]

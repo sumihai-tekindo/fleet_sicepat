@@ -5,7 +5,7 @@
 			<field name="name">fleet.vehicle.log_contract.form_inherrit</field>
 			<field name="model">fleet.vehicle.log.contract</field>
 			<field name="type">form</field>
-			<field name="domain">[('state','!=','toclose'),('state','!=','closed'),('state','=','completed')]</field>
+			<field name="domain">[('state','!=','toclose')]</field>
 			<field name="inherit_id" ref="fleet.fleet_vehicle_log_contract_form"/>
 			<field name="arch" type="xml">
                 <xpath expr="/form/sheet/group[1]/group[1]" position="after">
