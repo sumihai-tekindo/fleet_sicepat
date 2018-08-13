@@ -28,8 +28,8 @@ class fleet_vehicle(osv.osv):
 		'fuel_type': fields.selection([('gasoline', 'Gasoline'), ('diesel', 'Diesel'), ('solar','Solar'),('electric', 'Electric'), ('hybrid', 'Hybrid')], 'Fuel Type', help='Fuel Used by the vehicle',required=False),
 		'tools_ids': fields.one2many('vehicle.fleet.tools','fleet_id',"Tools"),
 		'nama_perusahaan' : fields.char('Nama Perusahaan', help="Nama pemilik BPKB"),
-		'active':fields.boolean('active', default=True),
-		
+		'active':fields.boolean('Active', default=True),
+		'owner':fields.many2one('res.partner', 'Owner Name', required=False),
 	}
 
 
@@ -43,7 +43,7 @@ _intervalTypes = {
     '5years': relativedelta(years=5),
 }
 
-
+	
 class fleet_vehicle_log_contract(osv.osv):
 	_inherit = 'fleet.vehicle.log.contract'
 
@@ -80,6 +80,11 @@ class fleet_vehicle_log_contract(osv.osv):
 
 		return {'value': {'expiration_date': expiration_date.strftime('%Y-%m-%d')}}
 
+	
+	# def check_change(self):
+	# 	if self.owner is False: 
+	# 		self.owner = self.employee.name
+		
 
 	def document_complete(self,cr,uid,ids,context=None):
 		return self.write(cr, uid, ids, {'state': 'completed'}, context=context)
